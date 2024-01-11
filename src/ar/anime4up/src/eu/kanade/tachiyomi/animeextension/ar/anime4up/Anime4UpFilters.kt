@@ -21,18 +21,22 @@ object Anime4UpFilters {
     internal class GenreFilter : QueryPartFilter("تصنيف الأنمي", Anime4UpFiltersData.GENRES)
     internal class TypeFilter : QueryPartFilter("نوع الأنمي", Anime4UpFiltersData.TYPES)
     internal class StatusFilter : QueryPartFilter("حالة الأنمي", Anime4UpFiltersData.STATUS)
+    internal class SeasonalFilter : QueryPartFilter("موسم الانمى", Anime4UpFiltersData.STATUS)
 
     val FILTER_LIST get() = AnimeFilterList(
         AnimeFilter.Header("الفلترات مش هتشتغل لو بتبحث او وهي فاضيه"),
         GenreFilter(),
         TypeFilter(),
         StatusFilter(),
+        SeasonalFilter(),
     )
 
     data class FilterSearchParams(
         val genre: String = "",
         val type: String = "",
         val status: String = "",
+        val season: String = "",
+
     )
 
     internal fun getSearchParameters(filters: AnimeFilterList): FilterSearchParams {
@@ -42,6 +46,7 @@ object Anime4UpFilters {
             filters.asQueryPart<GenreFilter>(),
             filters.asQueryPart<TypeFilter>(),
             filters.asQueryPart<StatusFilter>(),
+            filters.asQueryPart<SeasonalFilter>(),
         )
     }
 
@@ -106,5 +111,101 @@ object Anime4UpFilters {
             Pair("مكتمل", "complete"),
             Pair("يعرض الان", "%d9%8a%d8%b9%d8%b1%d8%b6-%d8%a7%d9%84%d8%a7%d9%86-1"),
         )
+        val season = arrayOf(
+            ANY,
+            Pair(خريف 1991,"%d8%ae%d8%b1%d9%8a%d9%81-1991") 
+            Pair(خريف 1999,"%d8%ae%d8%b1%d9%8a%d9%81-1999") 
+            Pair(خريف 2000,"%d8%ae%d8%b1%d9%8a%d9%81-2000") 
+            Pair(خريف 2002,"%d8%ae%d8%b1%d9%8a%d9%81-2002") 
+            Pair(خريف 2004,"%d8%ae%d8%b1%d9%8a%d9%81-2004") 
+            Pair(خريف 2005,"%d8%ae%d8%b1%d9%8a%d9%81-2005") 
+            Pair(خريف 2006,"%d8%ae%d8%b1%d9%8a%d9%81-2006") 
+            Pair(خريف 2007,"%d8%ae%d8%b1%d9%8a%d9%81-2007") 
+            Pair(خريف 2008,"%d8%ae%d8%b1%d9%8a%d9%81-2008") 
+            Pair(خريف 2009,"%d8%ae%d8%b1%d9%8a%d9%81-2009") 
+            Pair(خريف 2010,"%d8%ae%d8%b1%d9%8a%d9%81-2010") 
+            Pair(خريف 2011,"%d8%ae%d8%b1%d9%8a%d9%81-2011") 
+            Pair(خريف 2012,"%d8%ae%d8%b1%d9%8a%d9%81-2012") 
+            Pair(خريف 2013,"%d8%ae%d8%b1%d9%8a%d9%81-2013") 
+            Pair(خريف 2014,"%d8%ae%d8%b1%d9%8a%d9%81-2014") 
+            Pair(خريف 2015,"%d8%ae%d8%b1%d9%8a%d9%81-2015") 
+            Pair(خريف 2016,"%d8%ae%d8%b1%d9%8a%d9%81-2016") 
+            Pair(خريف 2017,"%d8%ae%d8%b1%d9%8a%d9%81-2017") 
+            Pair(خريف 2018,"%d8%ae%d8%b1%d9%8a%d9%81-2018") 
+            Pair(خريف 2019,"%d8%ae%d8%b1%d9%8a%d9%81-2019") 
+            Pair(خريف 2020,"%d8%ae%d8%b1%d9%8a%d9%81-2020") 
+            Pair(خريف 2021,"%d8%ae%d8%b1%d9%8a%d9%81-%d8%b9%d8%a7%d9%85-2021") 
+            Pair(خريف 2022,"%d8%ae%d8%b1%d9%8a%d9%81-2022") 
+            Pair(خريف 2023,"%d8%ae%d8%b1%d9%8a%d9%81-2023") 
+            Pair(ربيع 1989,"%d8%b1%d8%a8%d9%8a%d8%b9-1989") 
+            Pair(ربيع 2000,"%d8%b1%d8%a8%d9%8a%d8%b9-2000") 
+            Pair(ربيع 2001,"%d8%b1%d8%a8%d9%8a%d8%b9-2001") 
+            Pair(ربيع 2002,"%d8%b1%d8%a8%d9%8a%d8%b9-2002") 
+            Pair(ربيع 2003,"%d8%b1%d8%a8%d9%8a%d8%b9-2003") 
+            Pair(ربيع 2004,"%d8%b1%d8%a8%d9%8a%d8%b9-2004") 
+            Pair(ربيع 2005,"%d8%b1%d8%a8%d9%8a%d8%b9-2005") 
+            Pair(ربيع 2006,"%d8%b1%d8%a8%d9%8a%d8%b9-2006") 
+            Pair(ربيع 2007,"%d8%b1%d8%a8%d9%8a%d8%b9-2007") 
+            Pair(ربيع 2008,"%d8%a3%d9%86%d9%85%d9%8a%d8%a7%d8%aa-%d9%85%d9%88%d8%b3%d9%85-%d8%b1%d8%a8%d9%8a%d8%b9-2008") 
+            Pair(ربيع 2009,"%d8%b1%d8%a8%d9%8a%d8%b9-2009") 
+            Pair(ربيع 2010,"%d8%b1%d8%a8%d9%8a%d8%b9-2010") 
+            Pair(ربيع 2011,"%d8%b1%d8%a8%d9%8a%d8%b9-2011") 
+            Pair(ربيع 2012,"%d8%b1%d8%a8%d9%8a%d8%b9-2012") 
+            Pair(ربيع 2013,"%d8%b1%d8%a8%d9%8a%d8%b9-2013") 
+            Pair(ربيع 2014,"%d8%b1%d8%a8%d9%8a%d8%b9-2014") 
+            Pair(ربيع 2015,"%d8%b1%d8%a8%d9%8a%d8%b9-2015") 
+            Pair(ربيع 2016,"%d8%b1%d8%a8%d9%8a%d8%b9-2016") 
+            Pair(ربيع 2017,"%d8%b1%d8%a8%d9%8a%d8%b9-2017") 
+            Pair(ربيع 2018,"%d8%b1%d8%a8%d9%8a%d8%b9-2018") 
+            Pair(ربيع 2019,"%d8%b1%d8%a8%d9%8a%d8%b9-2019") 
+            Pair(ربيع 2020,"%d8%b1%d8%a8%d9%8a%d8%b9-2020") 
+            Pair(ربيع 2021,"%d8%b1%d8%a8%d9%8a%d8%b9-2021") 
+            Pair(ربيع 2022,"%d8%b1%d8%a8%d9%8a%d8%b9-2022") 
+            Pair(ربيع 2023,"%d8%b1%d8%a8%d9%8a%d8%b9-2023") 
+            Pair(شتاء 1986,"%d8%b4%d8%aa%d8%a7%d8%a1-1986") 
+            Pair(شتاء 1996,"%d8%b4%d8%aa%d8%a7%d8%a1-1996") 
+            Pair(شتاء 2001,"%d8%b4%d8%aa%d8%a7%d8%a1-2001") 
+            Pair(شتاء 2002,"%d8%b4%d8%aa%d8%a7%d8%a1-2002") 
+            Pair(شتاء 2003,"%d8%b4%d8%aa%d8%a7%d8%a1-2003") 
+            Pair(شتاء 2004,"%d8%b4%d8%aa%d8%a7%d8%a1-2004") 
+            Pair(شتاء 2005,"%d8%b4%d8%aa%d8%a7%d8%a1-2005") 
+            Pair(شتاء 2006,"%d8%b4%d8%aa%d8%a7%d8%a1-2006") 
+            Pair(شتاء 2007,"%d8%b4%d8%aa%d8%a7%d8%a1-2007") 
+            Pair(شتاء 2008,"%d8%b4%d8%aa%d8%a7%d8%a1-2008") 
+            Pair(شتاء 2009,"%d8%b4%d8%aa%d8%a7%d8%a1-2009") 
+            Pair(شتاء 2010,"%d8%b4%d8%aa%d8%a7%d8%a1-2010") 
+            Pair(شتاء 2012,"%d8%b4%d8%aa%d8%a7%d8%a1-2012") 
+            Pair(شتاء 2013,"%d8%b4%d8%aa%d8%a7%d8%a1-2013") 
+            Pair(شتاء 2014,"%d8%b4%d8%aa%d8%a7%d8%a1-2014") 
+            Pair(شتاء 2015,"%d8%b4%d8%aa%d8%a7%d8%a1-2015") 
+            Pair(شتاء 2016,"%d8%b4%d8%aa%d8%a7%d8%a1-2016") 
+            Pair(شتاء 2017,"%d8%b4%d8%aa%d8%a7%d8%a1-2017") 
+            Pair(شتاء 2018,"%d8%b4%d8%aa%d8%a7%d8%a1-2018") 
+            Pair(شتاء 2019,"%d8%b4%d8%aa%d8%a7%d8%a1-2019") 
+            Pair(شتاء 2020,"%d8%b4%d8%aa%d8%a7%d8%a1-2020") 
+            Pair(شتاء 2021,"%d8%b4%d8%aa%d8%a7%d8%a1-2021") 
+            Pair(شتاء 2022,"%d8%b4%d8%aa%d8%a7%d8%a1-2022") 
+            Pair(شتاء 2023,"%d8%b4%d8%aa%d8%a7%d8%a1-2023") 
+            Pair(شتاء 2024,"%d8%b4%d8%aa%d8%a7%d8%a1-2024") 
+            Pair(صيف 1995,"%d8%b5%d9%8a%d9%81-1995") 
+            Pair(صيف 1998,"%d8%b5%d9%8a%d9%81-1998") 
+            Pair(صيف 2003,"%d8%b5%d9%8a%d9%81-2003") 
+            Pair(صيف 2007,"%d8%b5%d9%8a%d9%81-2007") 
+            Pair(صيف 2008,"%d8%b5%d9%8a%d9%81-2008") 
+            Pair(صيف 2009,"%d8%b5%d9%8a%d9%81-2009") 
+            Pair(صيف 2011,"%d8%b5%d9%8a%d9%81-2011") 
+            Pair(صيف 2012,"%d8%b5%d9%8a%d9%81-2012") 
+            Pair(صيف 2013,"%d8%b5%d9%8a%d9%81-2013") 
+            Pair(صيف 2014,"%d8%b5%d9%8a%d9%81-2014") 
+            Pair(صيف 2015,"%d8%b5%d9%8a%d9%81-2015") 
+            Pair(صيف 2016,"%d8%b5%d9%8a%d9%81-2016") 
+            Pair(صيف 2017,"%d8%b5%d9%8a%d9%81-2017") 
+            Pair(صيف 2018,"%d8%b5%d9%8a%d9%81-2018") 
+            Pair(صيف 2019,"%d8%b5%d9%8a%d9%81-2019") 
+            Pair(صيف 2020,"%d8%b5%d9%8a%d9%81-2020") 
+            Pair(صيف 2021,"%d8%a3%d9%86%d9%85%d9%8a%d8%a7%d8%aa-%d8%b5%d9%8a%d9%81-2021") 
+            Pair(صيف 2022,"%d8%b5%d9%8a%d9%81-2022") 
+            Pair(صيف 2023,"%d8%b5%d9%8a%d9%81-2023") 
+         )
     }
 }
